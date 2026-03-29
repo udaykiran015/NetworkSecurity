@@ -3,5 +3,6 @@ numpy
 python-dotenv
 certifi
 pymongo
+pymongo[srv]
 
 #-e . #It will refer to setup.py file in the same directory and install the package defined there.

@@ -1,4 +1,6 @@
 ### Network Security Project For Phising Data
+
+### Practicing the industry-standard workflow:
 # ENV setup
 1. conda create -p venv python==3.10
 2. conda activate venv/
