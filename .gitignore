@@ -1,4 +1,4 @@
 venv
 .env
-artifacts
-logs
+artifact/
+logs/
