@@ -4,6 +4,7 @@
 # ENV setup
 1. conda create -p venv python==3.10
 2. conda activate venv/
+3. pip install -r requirements.txt
 # Git Commands
 1. git init
 2. git add .
@@ -11,3 +12,8 @@
 4. git branch -M 
 5. git remote add origin
 6. git push -u origin main
+
+# Pipelines
+1. ETL pipeline 
+2. DataIngestion
+3. DataValdation

@@ -16,6 +16,7 @@ from dotenv import load_dotenv
 load_dotenv()
 MONGO_DB_URL=os.getenv("MONGO_DB_URL")
 
+
 class DataIngestion:
     def __init__(self,data_ingestion_config:DataIngestionConfig):
         try:
@@ -27,13 +28,9 @@ class DataIngestion:
         """Just to read the data"""
         try:
             database_name=self.data_ingestion_config.database_name
-            print(database_name)
             collection_name=self.data_ingestion_config.collection_name
-            print(collection_name)
             self.mongo_client=pymongo.MongoClient(MONGO_DB_URL)
-            print(self.mongo_client.list_database_names())
             collection=self.mongo_client[database_name][collection_name]
-            print(self.mongo_client[database_name].list_collection_names())
             df=pd.DataFrame(list(collection.find()))
             if "_id" in df.columns.to_list():
                 df=df.drop(columns=["_id"],axis=1)
