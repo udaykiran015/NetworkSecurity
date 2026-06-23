@@ -17,3 +17,4 @@
 1. ETL pipeline 
 2. DataIngestion
 3. DataValdation
+4. DataTransformation
