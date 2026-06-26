@@ -2,3 +2,16 @@ venv
 .env
 artifact/
 logs/
+# MLflow
+mlruns/
+mlflow.db
+
+# Model files
+artifacts/
+*.pkl
+*.joblib
+*.onnx
+
+# Python
+__pycache__/
+*.pyc
