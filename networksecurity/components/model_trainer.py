@@ -7,7 +7,8 @@ from networksecurity.exception.exception import NetworkSecurityException
 from networksecurity.utils.main_utils.utils import load_numpy_array,evaluate_models,load_object,save_object
 from networksecurity.utils.ml_utils.metrics.classification_metric import get_classifaction_score
 from networksecurity.utils.ml_utils.model.estimator import NetworkModel
-
+import dagshub
+dagshub.init(repo_owner='peddiudaykiran61', repo_name='NetworkSecurity', mlflow=True)
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import r2_score
 from sklearn.neighbors import KNeighborsClassifier

@@ -5,7 +5,7 @@
 1. conda create -p venv python==3.10
 2. conda activate venv/
 3. pip install -r requirements.txt
-4. Set MONGO_DB_URL="mongodb+srv://sdugsduhsdukh:usdgusd@cluster0.aqvbkes.mongodb.net/?appName=Cluster0"
+4. Set MONGO_DB_URL in env with your creds="mongodb+srv://sdugsduhsdukh:usdgusd@cluster0.aqvbkes.mongodb.net/?appName=Cluster0"
 
 # Git Commands
 1. git init
@@ -21,3 +21,5 @@
 3. DataValdation
 4. DataTransformation
 5. Model Trainer
+6. ML flow tracking
+7. DagsHub
