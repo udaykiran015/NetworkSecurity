@@ -6,6 +6,7 @@
 2. conda activate venv/
 3. pip install -r requirements.txt
 4. Set MONGO_DB_URL in env with your creds="mongodb+srv://sdugsduhsdukh:usdgusd@cluster0.aqvbkes.mongodb.net/?appName=Cluster0"
+5. uvicorn app:app for UI
 
 # Git Commands
 1. git init
@@ -23,3 +24,4 @@
 5. Model Trainer
 6. ML flow tracking
 7. DagsHub
+8. Training Pipeline SetUp

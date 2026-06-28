@@ -14,10 +14,12 @@ if __name__=="__main__":
         logging.info("Initiated the data ingestion component")
         dataingestion_artifact=data_ingestion.initiate_data_ingestion()
         logging.info("Data ingestion completed successfully")
+
         data_validation=DataValidation(dataingestion_artifact,DataValidationConfig(TrainingPipelineConfig()))
         logging.info("Data Validation intitaited")
         datavalidation_artifact=data_validation.initiate_data_validation()
         logging.info("Data Validation completed")
+        
         #DataTranfomatiomn
         data_transformation=DataTransformation(datavalidation_artifact,DataTransformationConfig(TrainingPipelineConfig()))
         logging.info("Data Transdformation  intitaited")
