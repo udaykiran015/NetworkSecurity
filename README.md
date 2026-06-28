@@ -25,3 +25,4 @@
 6. ML flow tracking
 7. DagsHub
 8. Training Pipeline SetUp
+9. Batch Prediction

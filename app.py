@@ -1,13 +1,17 @@
 import sys
+import pandas as pd
 
-from fastapi import FastAPI
+
+from fastapi import FastAPI, File, Request, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import Response
+from fastapi.responses import HTMLResponse, Response
 from starlette.responses import RedirectResponse
 from uvicorn import run as app_run
 
 from networksecurity.exception.exception import NetworkSecurityException
 from networksecurity.pipeline.training_pipeline import TrainingPipeline
+from networksecurity.utils.main_utils.utils import load_object
+from networksecurity.utils.ml_utils.model.estimator import NetworkModel
 
 app = FastAPI()
 origins = ["*"]
@@ -19,7 +23,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
 
 @app.get("/", tags=["authentication"])
 async def index():
@@ -34,7 +37,38 @@ async def train_route():
         return Response("Training is successful")
     except Exception as e:
         raise NetworkSecurityException(e, sys)
+@app.post("/predict")
+async def predict_route(request: Request, file: UploadFile = File(...)):
+    try:
+        df = pd.read_csv(file.file)
+        preprocesor = load_object("final_model/preprocessing.pkl")
+        final_model = load_object("final_model/model.pkl")
+        network_model = NetworkModel(preprocessor=preprocesor, model=final_model)
+        y_pred = network_model.predict(df)
+        df["predicted_column"] = y_pred
+        df.to_csv("prediction_output/output.csv", index=False)
 
+        table_html = df.to_html(classes="table table-striped", index=False)
+        html_content = f"""
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>Prediction Result</title>
+            <style>
+                table {{ border-collapse: collapse; width: 100%; }}
+                th, td {{ border: 1px solid #ccc; padding: 8px; text-align: left; }}
+            </style>
+        </head>
+        <body>
+            <h2>Prediction Result</h2>
+            {table_html}
+        </body>
+        </html>
+        """
+        return HTMLResponse(content=html_content)
+
+    except Exception as e:
+        raise NetworkSecurityException(e, sys)
 
 if __name__ == "__main__":
     app_run(app, host="0.0.0.0", port=8000)
