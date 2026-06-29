@@ -26,3 +26,5 @@
 7. DagsHub
 8. Training Pipeline SetUp
 9. Batch Prediction
+10. S3 Bucket
+11. Docker Image and Github actions
