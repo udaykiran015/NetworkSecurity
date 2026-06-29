@@ -9,7 +9,8 @@ from networksecurity.constants.training_pipeline import SCHEMA_FILE_PATH
 
 from scipy.stats import ks_2samp
 import pandas as pd
-import os,sys
+import os
+import sys
 
 class DataValidation:
     def __init__(self,data_ingestion_artifact:DataIngestionArtifact,data_validation_config:DataValidationConfig):

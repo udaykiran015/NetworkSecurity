@@ -10,8 +10,6 @@ from networksecurity.utils.ml_utils.model.estimator import NetworkModel
 import dagshub
 dagshub.init(repo_owner='peddiudaykiran61', repo_name='NetworkSecurity', mlflow=True)
 from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import r2_score
-from sklearn.neighbors import KNeighborsClassifier
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import(
     AdaBoostClassifier,

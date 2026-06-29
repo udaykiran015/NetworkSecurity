@@ -1,4 +1,3 @@
-import os
 import sys
 from networksecurity.logging.logger import logging
 from networksecurity.components.data_ingestion import DataIngestion

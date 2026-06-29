@@ -3,9 +3,7 @@ import json
 import sys
 import pymongo
 import pandas as pd
-import numpy as np
 from networksecurity.exception.exception import NetworkSecurityException
-from networksecurity.logging.logger import logging
 from dotenv import load_dotenv
 load_dotenv()
 

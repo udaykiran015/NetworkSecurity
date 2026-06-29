@@ -11,7 +11,6 @@ import pandas as pd
 import numpy as np
 import pymongo
 from sklearn.model_selection import train_test_split
-from typing import List
 from dotenv import load_dotenv
 load_dotenv()
 MONGO_DB_URL=os.getenv("MONGO_DB_URL")
@@ -61,7 +60,7 @@ class DataIngestion:
             os.makedirs(dire_path,exist_ok=True)
             train_set.to_csv(self.data_ingestion_config.training_file_path,index=False,header=True)
             test_set.to_csv(self.data_ingestion_config.testing_file_path,index=False,header=True)
-            logging.info(f"Exported train and test data")
+            logging.info("Exported train and test data")
         except Exception as e:
             raise NetworkSecurityException(e,sys)  
          

@@ -1,9 +1,9 @@
 import yaml
-import os,sys
+import os
+import sys
 from networksecurity.exception.exception import NetworkSecurityException
 from networksecurity.logging.logger import logging
 import numpy as np
-import pandas as pd
 import pickle
 from sklearn.model_selection import GridSearchCV
 from sklearn.metrics import accuracy_score

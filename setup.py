@@ -13,7 +13,7 @@ def get_requirements()->List[str]:
                 if line.strip() and not line.startswith('-e'):
                     requirements.append(line.strip())
     except FileNotFoundError:
-        print(f"Error reading requirements.txt: File not found.")
+        print("Error reading requirements.txt: File not found.")
     return requirements
 
 setup(
