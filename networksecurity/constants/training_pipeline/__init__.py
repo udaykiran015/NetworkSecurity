@@ -1,7 +1,6 @@
 import os
-import sys
 import numpy as np
-import pandas as pd
+
 """Constant Variable for Training Pipeline"""
 
 TARGET_COLUMN:str = "Result"

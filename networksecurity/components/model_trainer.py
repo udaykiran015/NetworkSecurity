@@ -8,7 +8,7 @@ from networksecurity.utils.main_utils.utils import load_numpy_array,evaluate_mod
 from networksecurity.utils.ml_utils.metrics.classification_metric import get_classifaction_score
 from networksecurity.utils.ml_utils.model.estimator import NetworkModel
 import dagshub
-dagshub.init(repo_owner='peddiudaykiran61', repo_name='NetworkSecurity', mlflow=True)
+
 from sklearn.linear_model import LogisticRegression
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import(
@@ -16,7 +16,7 @@ from sklearn.ensemble import(
     GradientBoostingClassifier,
     RandomForestClassifier  
 )
-
+dagshub.init(repo_owner='peddiudaykiran61', repo_name='NetworkSecurity', mlflow=True)
 class ModelTrainer:
     def __init__(self,model_trainer_config:ModelTrainerConfig,data_transformation_artifact:DataTransfomrationArifact):
         try:

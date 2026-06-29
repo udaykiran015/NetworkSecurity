@@ -50,7 +50,6 @@ class DataValidation:
         
     def detect_data_drift(self,base_df,current_df,threshold=0.05)->bool:
         try:
-            status=True
             report={}
             for column in base_df.columns:
                 a1=base_df[column]
@@ -60,7 +59,6 @@ class DataValidation:
                     is_change=False
                 else:
                     is_change=True
-                    status=False
                 report.update({
                     column:{
                         "p_value":float(is_same_dist.pvalue),

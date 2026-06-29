@@ -3,6 +3,7 @@ import json
 import sys
 import pymongo
 import pandas as pd
+import certifi
 from networksecurity.exception.exception import NetworkSecurityException
 from dotenv import load_dotenv
 load_dotenv()
@@ -10,7 +11,7 @@ load_dotenv()
 mongo_url=os.getenv("MONGO_DB_URL")
 #print(mongo_url)
 
-import certifi
+
 ca=certifi.where()
 
 class NetworkSecurityDataPush():
