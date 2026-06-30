@@ -91,20 +91,26 @@ jobs:
         run: echo "✅ Docker Image pushed to Amazon ECR successfully!"
 
   deploy-to-ec2:
-    name: Deploy To EC2
+    name: Continuous Deployment
     needs: build-and-push-ecr-image
     runs-on: self-hosted
 
     steps:
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
       - name: Login to Amazon ECR
-        run: |
-          aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin ${{ secrets.AWS_ECR_LOGIN_URI }}
+        uses: aws-actions/amazon-ecr-login@v2
 
       - name: Pull Latest Docker Image
         run: |
           docker pull ${{ secrets.AWS_ECR_LOGIN_URI }}/${{ secrets.ECR_REPOSITORY_NAME }}:latest
 
-      - name: Stop Existing Container
+      - name: Stop Old Container
         run: |
           docker stop network-security || true
           docker rm network-security || true
@@ -117,5 +123,6 @@ jobs:
             --restart unless-stopped \
             ${{ secrets.AWS_ECR_LOGIN_URI }}/${{ secrets.ECR_REPOSITORY_NAME }}:latest
 
-      - name: Deployment Completed
-        run: echo "✅ Application deployed successfully on EC2"
+      - name: Clean Unused Docker Images
+        run: |
+          docker system prune -f
