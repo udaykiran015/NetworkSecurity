@@ -28,6 +28,9 @@
 9. Batch Prediction
 10. S3 Bucket
 11. Docker Image and Github actions
+12. ECR and EC2 (CI/CD pipelines)
+
+commands for ubantu in AWS
 
 # 1. Update package list (Recommended)
 sudo apt-get update -y
