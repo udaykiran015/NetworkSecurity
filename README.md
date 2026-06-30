@@ -28,3 +28,19 @@
 9. Batch Prediction
 10. S3 Bucket
 11. Docker Image and Github actions
+
+# 1. Update package list (Recommended)
+sudo apt-get update -y
+
+# 2. Install Docker (Required)
+curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
+
+# 3. Allow ubuntu user to use Docker without sudo (Required)
+sudo usermod -aG docker ubuntu
+
+# 4. Apply the new group immediately (Required)
+newgrp docker
+
+# 5. Verify Docker installation
+docker --version
